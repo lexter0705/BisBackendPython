@@ -1,24 +1,26 @@
 import asyncio
 import json
 
-from fastapi import WebSocket
+from fastapi import WebSocket, APIRouter
 
-from app import app
+router = APIRouter(prefix="/ws")
 
 
-@app.websocket("/ws/chats")
-async def start_chat_websocket(websocket: WebSocket):
+@router.websocket("/chats/{user_id}")
+async def start_chats_connection(websocket: WebSocket, user_id: str):
     await websocket.accept()
     while True:
         await asyncio.sleep(5)
         data = await websocket.receive_text()
         data = json.loads(data)
+        print(data)
 
 
-@app.websocket("/ws/messages")
-async def start_chat_websocket(websocket: WebSocket):
+@router.websocket("/messages/{user_id}")
+async def start_messages_connection(websocket: WebSocket, user_id: str):
     await websocket.accept()
     while True:
         await asyncio.sleep(5)
         data = await websocket.receive_text()
         data = json.loads(data)
+        print(data)
