@@ -8,6 +8,7 @@ class ChatWorker(DatabaseWorker):
     def __init__(self, database_path: str):
         super().__init__(ChatTable, database_path)
 
-    def get_user_chats(self, user_address: str):
+    def get_user_chats(self, user_address: str) -> list[tuple]:
         data = self.connect.execute(select(ChatTable).where(
-            or_(ChatTable.first_user_id == user_address, ChatTable.second_user_id == user_address)))
+            or_(ChatTable.first_user_id == user_address, ChatTable.second_user_id == user_address))).fetchall()
+        return data

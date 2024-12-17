@@ -9,5 +9,5 @@ class MessageWorker(DatabaseWorker):
         super().__init__(MessageTable, database_path)
 
     def select_all_messages_in_chat(self, chat_id: int):
-        data = self.connect.execute(select(MessageTable).where(MessageTable.chat_id == chat_id))
+        data = self.connect.execute(select(MessageTable).where(MessageTable.chat_id == chat_id)).fetchall()
         return data
