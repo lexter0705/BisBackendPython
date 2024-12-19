@@ -10,6 +10,7 @@ class Base(DeclarativeBase):
 class UserTable(Base):
     __tablename__ = 'user'
     user_id: Mapped[str] = mapped_column(primary_key=True)
+    name: Mapped[str]
     private_key: Mapped[str]
 
 
@@ -34,3 +35,6 @@ class MessageTable(Base):
 def create_database(path: str):
     engine = create_engine("sqlite:///" + path)
     Base.metadata.create_all(engine)
+
+if __name__ == "__main__":
+    create_database(path="./main.db")

@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
-from server.hendlers.post_http import router as http_router
+from server.hendlers.users import router as http_router
 from server.hendlers.chats import router as chats_router
 from server.hendlers.messages import router as messages_router
 
