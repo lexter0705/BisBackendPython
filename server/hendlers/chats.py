@@ -1,9 +1,9 @@
 import asyncio
 
 from fastapi import WebSocket, APIRouter
+from starlette.responses import JSONResponse
 
 from server.base_includer import chat_worker, user_worker
-from starlette.responses import JSONResponse
 
 router = APIRouter(prefix="/chats")
 

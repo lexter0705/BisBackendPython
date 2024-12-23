@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, ForeignKey
+from sqlalchemy import create_engine, ForeignKey, String
 from sqlalchemy.orm import DeclarativeBase, Mapped, relationship, backref
 from sqlalchemy.testing.schema import mapped_column
 
@@ -12,6 +12,7 @@ class UserTable(Base):
     user_id: Mapped[str] = mapped_column(primary_key=True)
     name: Mapped[str]
     private_key: Mapped[str]
+    path_to_icon: Mapped[str] = mapped_column(String, nullable=True)
 
 
 class ChatTable(Base):

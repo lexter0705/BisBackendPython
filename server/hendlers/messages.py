@@ -9,6 +9,7 @@ from server.base_includer import messages_worker
 
 router = APIRouter(prefix="/messages")
 
+
 class Message(BaseModel):
     chat_id: int
     user: str
